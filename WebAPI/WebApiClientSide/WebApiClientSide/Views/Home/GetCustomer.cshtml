@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Get Customer";
+    Layout = null;
+}
+
+<h2>Get Customer</h2>
+<h3>Customer fname from Session is <strong>@ViewBag.fname</strong></h3>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script>
+
+        $(document).ready(function () {
+            // Method to get list of customers.
+            $.ajax({
+                url: "http://localhost:57881/api/customers",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $("#DIV").html('');
+                    var DIV = '';
+                    $.each(data, function (i, item) {
+                        var rows = "<tr>" +
+                            "<td id='Id'>" + item.Id + "</td>" +
+                            "<td id='Firstname'>" + item.Firstname + "</td>" +
+                            "<td id='Lastname'>" + item.Lastname + "</td>" +
+                            "</tr>";
+                        $('#Table').append(rows);
+                    });     // End of foreach loop.
+                },          // End of "success"
+                failure: function (data) {
+                    alert(data.responseText);
+                },          // End of "failure"
+                error: function (data) {
+                    alert(data.responseText);
+                },          // End of "error"
+            });             // End of ajax.
+
+            // Get details of a given customer id on click of button.
+            $("#Get").click(function () {
+                var id = document.getElementById("customerId").value;
+                var url = "http://localhost:57881/api/customers/" + id;
+                $.ajax({
+                    url: url,
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#firstname").text(data.Firstname);
+                        $('#lastname').text(data.Lastname);
+                    },          // End of "success"
+                    failure: function (data) {
+                        alert(data.responseText);
+                    },          // End of "failure"
+                    error: function (data) {
+                        alert(data.responseText);
+                    },          // End of "error"
+                });             // End of ajax.
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Test Data from API
+            </div>   <!--end of panel-heading -->
+            <div class="panel-body">
+                <table class="table table-bordered" id="Table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                    </tr>   <!--end of table-row -->
+                </table>   <!--end of table -->
+            </div> <!--end of Panel-body -->
+        </div> <!--end of Panel -->
+
+        <br />
+        <hr />
+        <div id="getACustomer">
+            <table>
+                <tr>
+                    <td>Id: </td>
+                    <td><input type="text" name="customerId" id="customerId" /></td>
+                </tr>
+                <tr>
+                    <td>Firstname: </td>
+                    <td><label name="firstname" id="firstname">[Firstname]</label></td>
+                </tr>
+                <tr>
+                    <td>Lastname: </td>
+                    <td><label name="lastname" id="lastname">[Lastname]</label></td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="Get" value="Get a Customer" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+            </ul>
+        </div>
+    </form>
+</body>
+</html>
+

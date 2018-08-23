@@ -1,0 +1,45 @@
+<HTML>
+    <Head>
+        <style type="text/css" rel="stylesheet">
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 12px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        </style>
+        <script type="text/javascript">
+            function makeSizer(size) {
+                //alert(size);                
+            
+                return function() {
+                    //alert(size);
+                    document.body.style.fontSize = size + 'px';
+                    //document.getElementById("someDiv").style.fontSize = size + 'px';
+                };
+            }
+
+            var size12 = makeSizer("12");
+            var size14 = makeSizer("14");
+            var size16 = makeSizer("16");
+
+        </script>
+    </Head>
+    <body>
+        <div id="someDiv">
+            <p>Some paragraph text</p>
+            <h1>some heading 1 text</h1>
+            <h2>some heading 2 text</h2>
+        </div>
+
+        <a href="#" id="size-12" onclick="size12();">12</a>
+        <a href="#" id="size-14" onclick="size14();">14</a>
+        <a href="#" id="size-16" onclick="size16();">16</a>     
+    </body>    
+</HTML>

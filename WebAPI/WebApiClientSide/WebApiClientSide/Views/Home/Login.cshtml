@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $("#Login").click(function () {
+            var user = new Object();
+            user.username = $('#username').val();
+            user.password = $('#password').val();
+            alert(user.username + ":" + user.password);
+            alert(JSON.stringify(user));
+            $.ajax({
+                url: 'http://localhost:54756/api/account/login',
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                
+                //dataType: 'json',
+                data: JSON.stringify(user),
+                success: function (data, textStatus, xhr) {
+                    alert("Token: " + data.access_token);
+                    sessionStorage.setItem("token", data.access_token);
+                    var tok = sessionStorage.getItem("token");
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Error in Operation');
+                }
+            });
+        });
+    });
+</script>
+
+<form id="form1">
+    Username :- <input type="text" name="username" id="username" />
+    Password:- <input type="password" name="password" id="password" />
+    <input type="button" id="Login" value="Login" />
+
+    <div>
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+        </ul>
+    </div>
+</form>

@@ -1,0 +1,14 @@
+<HTML>
+    <Head>
+        <script type="text/javascript">
+            function init() {
+                var name = 'IE';        // name is a local variable created by init
+                function displayName() {    // displayName() is the inner function, a closure
+                    alert(name);            // use variable declared in the parent function. Lexical scoping!
+                }
+                displayName();    
+            }
+            init();
+        </script>
+    </Head>    
+</HTML>

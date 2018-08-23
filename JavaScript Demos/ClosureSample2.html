@@ -1,0 +1,16 @@
+<HTML>
+    <Head>
+        <script type="text/javascript">
+            function makeFunc() {
+				var name = 'Closure Sample 2';
+				function displayName() {
+					alert(name);
+				}
+				return displayName;
+            }
+
+            var myFunc = makeFunc();
+            myFunc();
+        </script>
+    </Head>    
+</HTML>

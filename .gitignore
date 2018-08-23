@@ -1,18 +1,18 @@
 /LocalAccountsApp-master.zip
 /AuthApp/.vs/
 /AuthApp/packages/
-/AuthApp/bin/
-/AuthApp/obj/
+/AuthApp/AuthApp/bin/
+/AuthApp/AuthApp/obj/
 /LocalAccountsApp-master/.git*
 /LocalAccountsApp-master/.vs/
 /LocalAccountsApp-master/packages/
-/LocalAccountsApp-master/bin/
-/LocalAccountsApp-master/obj/
+/LocalAccountsApp-master/LocalAccountsApp/bin/
+/LocalAccountsApp-master/LocalAccountsApp/obj/
 /SimpleAuth/.vs/
 /SimpleAuth/packages/
-/SimpleAuth/bin/
-/SimpleAuth/obj/
-/Web API/WebApiClientSide/.vs/
-/Web API/WebApiClientSide/packages/
-/Web API/WebApiClientSide/bin/
-/Web API/WebApiClientSide/obj/
+/SimpleAuth/SimpleAuth/bin/
+/SimpleAuth/SimpleAuth/obj/
+/WebAPI/WebApiClientSide/.vs/
+/WebAPI/WebApiClientSide/packages/
+/WebAPI/WebApiClientSide/WebApiClientSide/bin/
+/WebAPI/WebApiClientSide/WebApiClientSide/obj/

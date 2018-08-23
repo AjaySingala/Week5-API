@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Add Customer JQ";
+    Layout = null;
+}
+
+<h2>Add Customer using jQuery</h2>
+
+<h3>@Session["fname"]</h3>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Save").click(function () {
+                var Customer = new Object();
+                Customer.Firstname = $('#firstname').val();
+                Customer.Lastname = $('#lastname').val();
+                $.post('http://localhost:57881/api/customers', Customer, function (data) {
+                    alert(data.Firstname + ' ' + data.Lastname + ' added');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1">
+        Firstname :- <input type="text" name="firstname" id="firstname" />
+        Lastname:- <input type="text" name="lastname" id="lastname" />
+        <input type="button" id="Save" value="Save Data" />
+
+        <div>
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+            </ul>
+        </div>
+    </form>
+
+</body>
+</html>
+
